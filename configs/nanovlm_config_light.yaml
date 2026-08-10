@@ -1,0 +1,19 @@
+model:
+  vision_encoder: "google/siglip-base-patch16-224"
+  hidden_size: 256
+  num_classes: 1
+
+training:
+  num_epochs: 5
+  batch_size: 4
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  num_frames: 4
+  image_size: 128
+
+data:
+  path: "/run/media/Mhyr/DATA/Files/files/term8/project/video_segmentation_project"
+
+logging:
+  wandb: false
+  save_dir: "./checkpoints/nanovlm"

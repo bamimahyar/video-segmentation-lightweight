@@ -1,0 +1,17 @@
+model:
+  name: "efficienttam"
+  num_classes: 1
+
+training:
+  num_epochs: 10
+  batch_size: 2
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  num_frames: 4
+  image_size: 224
+
+data:
+  path: "/run/media/Mhyr/DATA/Files/files/term8/project/video_segmentation_project"
+
+logging:
+  save_dir: "./checkpoints/efficienttam"
