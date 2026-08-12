@@ -66,7 +66,7 @@ nanoVLM :
           year = {2023}
         }
 
-SmolVLM
+SmolVLM :
 
     Paper: "SmolVLM: Tiny yet Mighty Vision-Language Models" (Example placeholder)
 
@@ -82,8 +82,8 @@ SmolVLM
           howpublished = {\url{https://github.com/example/smolvlm}}
         }
 
-Contact
+Contact:
+       Developer:** Mahyar Bami
+       GitHub:** [bamimahyar](https://github.com/bamimahyar)
 
-    Developer: Mahyar Bami
-
-    GitHub: bamimahyar
+ Give a star if useful!
