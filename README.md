@@ -4,18 +4,7 @@
 
 A lightweight computer vision project for **frame-based video segmentation** using modern vision and vision-language models.
 
-The project processes video sequences as **pre-extracted image frames**, applies the implemented models to the frames, and generates segmentation masks and processed outputs.
-
----
-
-<p align="center">
-
-[![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python\&logoColor=white)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-Framework-EE4C2C?logo=pytorch\&logoColor=white)](https://pytorch.org/)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Models-FFD21E?logo=huggingface\&logoColor=black)](https://huggingface.co/)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github\&logoColor=white)](https://github.com/bamimahyar/video-segmentation-lightweight)
-
-</p>
+This project processes video sequences as **pre-extracted image frames**, applies the implemented models to those frames, and generates segmentation masks and processed outputs.
 
 ---
 
@@ -23,100 +12,97 @@ The project processes video sequences as **pre-extracted image frames**, applies
 
 Video segmentation is the task of identifying and segmenting objects across a sequence of video frames.
 
-Large vision models can provide strong performance, but they may require significant computational resources. This project investigates a more lightweight approach using modern efficient models and a **frame-based processing pipeline**.
-
-Instead of requiring the original video file during inference, the project works with video data that has already been converted into individual image frames.
-
-### Pipeline
+Instead of requiring the original video file during the segmentation stage, this project works with video data that has already been converted into individual image frames.
 
 ```text
-                    VIDEO DATA
-                        │
-                        ▼
-               Pre-extracted Frames
-                        │
-                        ▼
-              ┌───────────────────┐
-              │   Model Inference │
-              └───────────────────┘
-                        │
-          ┌─────────────┼─────────────┐
-          ▼             ▼             ▼
-     EfficientTAM    nanoVLM      SmolVLM
-          │             │             │
-          ▼             ▼             ▼
-     Segmentation    Vision-       Vision-
-        Masks        Language      Language
-                     Analysis      Analysis
-          │             │             │
-          └─────────────┼─────────────┘
-                        ▼
-                  Output Frames
+                        Video Data
+                            │
+                            ▼
+                   Pre-extracted Frames
+                            │
+                            ▼
+                     Model Inference
+                            │
+             ┌──────────────┼──────────────┐
+             ▼              ▼              ▼
+        EfficientTAM     nanoVLM       SmolVLM
+             │              │              │
+             ▼              ▼              ▼
+       Segmentation      Vision-        Vision-
+          Masks          Language       Language
+                         Processing     Processing
+             │              │              │
+             └──────────────┼──────────────┘
+                            ▼
+                     Output Frames
 ```
+
+### 🎯 Main Focus
+
+The primary segmentation-oriented model in this project is **EfficientTAM**.
+
+**nanoVLM** and **SmolVLM** are included for lightweight multimodal experimentation and model comparison.
 
 ---
 
-## 🚀 Key Features
+# 🚀 Key Features
 
-* 🎯 Frame-based video segmentation
+* 🎯 **Frame-based video segmentation**
 * ⚡ Lightweight model experimentation
 * 🧠 EfficientTAM for segmentation
 * 👁️ nanoVLM for lightweight vision-language processing
 * 🔬 SmolVLM for compact multimodal processing
-* 🖼️ Support for individual image-frame inference
-* 📊 IoU-based segmentation evaluation
-* 🧩 Modular project structure
-* 📝 Reproducible configuration and model comparison
+* 🖼️ Individual frame inference
+* 📊 IoU-based evaluation
+* 🧩 Modular architecture
+* 📈 Model comparison
+* 💾 Automatic output generation
 
 ---
 
 # 🤖 Models
 
-## EfficientTAM
+## 1. EfficientTAM
 
 **EfficientTAM** is the primary segmentation model used in this project.
 
-It is designed for efficient video object segmentation and tracking with a focus on reducing computational and memory requirements.
+It is designed for efficient video object segmentation and tracking, with a focus on reducing computational and memory requirements.
 
 In this project, video sequences are represented as ordered image frames. EfficientTAM processes these frames and generates the corresponding segmentation masks.
 
-🔗 **Official Repository**
+### 🔗 Official Repository
 
-https://github.com/yformer/EfficientTAM
+[EfficientTAM — GitHub](https://github.com/yformer/EfficientTAM?utm_source=chatgpt.com)
 
 ---
 
-## nanoVLM
+## 2. nanoVLM
 
 **nanoVLM** is a lightweight Vision-Language Model developed by Hugging Face.
 
 It is included in this project for lightweight multimodal experimentation and model comparison.
 
-🔗 **Official Repository**
+### 🔗 Resources
 
-https://github.com/huggingface/nanoVLM
+[nanoVLM — GitHub](https://github.com/huggingface/nanoVLM?utm_source=chatgpt.com)
 
-🔗 **Official Introduction**
-
-https://huggingface.co/blog/nanovlm
+[nanoVLM — Hugging Face Blog](https://huggingface.co/blog/nanovlm?utm_source=chatgpt.com)
 
 > **Note:** nanoVLM is a Vision-Language Model and is not treated as the primary segmentation model in this project.
 
 ---
 
-## SmolVLM
+## 3. SmolVLM
 
 **SmolVLM** is a compact Vision-Language Model developed by Hugging Face.
 
-It is included for lightweight multimodal processing and comparison with other implemented models.
+It is included for lightweight multimodal processing and comparison with the other implemented models.
 
-🔗 **Documentation**
+### 🔗 Resources
 
-https://huggingface.co/docs/transformers/model_doc/smolvlm
+[SmolVLM — Hugging Face Documentation](https://huggingface.co/docs/transformers/model_doc/smolvlm?utm_source=chatgpt.com)
 
-🔗 **Official Introduction**
-
-https://huggingface.co/blog/smolvlm
+[SmolVLM — Hugging Face Blog](https://huggingface.co/blog/smolvlm?utm_source=chatgpt.com)
 
 > **Note:** SmolVLM is a Vision-Language Model and is not presented as the primary segmentation model.
 
@@ -128,7 +114,7 @@ The dataset used in this project consists of **video sequences represented as pr
 
 The original videos are converted into ordered frames before the segmentation stage.
 
-Example structure:
+### Example Dataset Structure
 
 ```text
 dataset/
@@ -137,7 +123,6 @@ dataset/
 │   ├── 00001.jpg
 │   ├── 00002.jpg
 │   ├── 00003.jpg
-│   ├── 00004.jpg
 │   └── ...
 │
 ├── Video_02/
@@ -149,13 +134,15 @@ dataset/
 └── ...
 ```
 
-This design allows each video sequence to be processed frame by frame while preserving the temporal order of the original video.
+This approach allows the segmentation pipeline to process each frame independently while preserving the original temporal order.
+
+> **Note:** The original video files are not required during the segmentation stage because the dataset is already available as individual frames.
 
 ---
 
-# 🔬 Processing Workflow
+# 🔬 Processing Pipeline
 
-The segmentation workflow can be summarized as follows:
+The project follows a frame-based processing pipeline.
 
 ```text
 ┌──────────────────────────┐
@@ -169,26 +156,28 @@ The segmentation workflow can be summarized as follows:
              │
              ▼
 ┌──────────────────────────┐
-│     Model Inference      │
+│    Model Inference       │
 └────────────┬─────────────┘
              │
              ▼
 ┌──────────────────────────┐
-│    Segmentation Mask     │
+│   Segmentation Mask      │
 └────────────┬─────────────┘
              │
              ▼
 ┌──────────────────────────┐
-│    Processed Frame       │
+│     Processed Frame      │
 └────────────┬─────────────┘
              │
              ▼
 ┌──────────────────────────┐
-│      Output Results      │
+│      Output Result       │
 └──────────────────────────┘
 ```
 
-For a complete video sequence:
+### Video Sequence Processing
+
+Each video sequence is represented by an ordered set of frames:
 
 ```text
 Frame 001 ──► Model ──► Mask 001
@@ -198,7 +187,7 @@ Frame 003 ──► Model ──► Mask 003
 Frame N   ──► Model ──► Mask N
 ```
 
-The processed frames can subsequently be combined or visualized as a segmented video sequence.
+The processed frames preserve the original frame order and can subsequently be used to visualize or reconstruct the segmented video.
 
 ---
 
@@ -226,32 +215,30 @@ video-segmentation-lightweight/
 └── README.md
 ```
 
-### Directory Description
-
-| Directory / File        | Description                           |
-| ----------------------- | ------------------------------------- |
-| `models/`               | Model implementations                 |
-| `utils/`                | Helper functions and utilities        |
-| `outputs/`              | Generated masks and processed results |
-| `sample_input/`         | Sample input frames                   |
-| `configs/`              | Model and project configurations      |
-| `main.py`               | Main project entry point              |
-| `process_all_models.py` | Runs the implemented models           |
-| `requirements.txt`      | Python dependencies                   |
-| `README.md`             | Project documentation                 |
+| File / Directory        | Description                               |
+| ----------------------- | ----------------------------------------- |
+| `models/`               | Implementations of the supported models   |
+| `utils/`                | Helper functions and utility modules      |
+| `outputs/`              | Generated masks and processed results     |
+| `sample_input/`         | Sample input frames                       |
+| `configs/`              | Model and project configuration files     |
+| `main.py`               | Main project entry point                  |
+| `process_all_models.py` | Script for running the implemented models |
+| `requirements.txt`      | Python project dependencies               |
+| `README.md`             | Project documentation                     |
 
 ---
 
 # ⚙️ Installation
 
-## 1. Clone the repository
+## 1. Clone the Repository
 
 ```bash
 git clone https://github.com/bamimahyar/video-segmentation-lightweight.git
 cd video-segmentation-lightweight
 ```
 
-## 2. Install dependencies
+## 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -259,15 +246,15 @@ pip install -r requirements.txt
 
 ## 3. GPU Support
 
-For GPU acceleration, make sure that your installed PyTorch version is compatible with your system's CUDA version.
+GPU execution is recommended for faster inference.
 
-GPU execution is recommended for faster model inference.
+Make sure that your installed version of **PyTorch** is compatible with the CUDA version available on your system.
 
 ---
 
 # ▶️ Usage
 
-## Process a Single Frame
+## 🖼️ Process a Single Frame
 
 To process an individual input frame:
 
@@ -275,78 +262,52 @@ To process an individual input frame:
 python process_all_models.py --image sample_input/00035.jpg
 ```
 
-The available models process the input according to their implementation and generate the corresponding outputs.
+The implemented models process the input according to their respective implementations and generate the corresponding outputs.
 
 ---
 
-## Process a Video Sequence
+## 🎞️ Process a Video Sequence
 
-The project uses **pre-extracted video frames** rather than requiring the original video file during the segmentation stage.
+The project works with **pre-extracted video frames** rather than requiring an MP4 file during the segmentation stage.
 
 The workflow is:
 
 ```text
-Video
-  │
-  ▼
-Pre-extracted Frames
-  │
-  ├── Frame 001
-  ├── Frame 002
-  ├── Frame 003
-  └── ...
-        │
-        ▼
-   Model Processing
-        │
-        ▼
- Segmentation Results
-        │
-        ▼
- Processed Frames
+                     Video
+                       │
+                       ▼
+              Pre-extracted Frames
+                       │
+             ┌─────────┼─────────┐
+             ▼         ▼         ▼
+          Frame 1   Frame 2   Frame N
+             │         │         │
+             └─────────┼─────────┘
+                       ▼
+                 Model Processing
+                       │
+                       ▼
+                Segmentation Masks
+                       │
+                       ▼
+                 Processed Frames
 ```
 
-This approach is particularly useful when working with existing frame-based datasets.
-
----
-
-# 📤 Outputs
-
-Generated results are stored in:
-
-```text
-outputs/
-```
-
-Depending on the selected model and configuration, the output directory may contain:
-
-```text
-outputs/
-│
-├── segmentation_masks/
-├── processed_frames/
-└── model_results/
-```
-
-The exact output structure depends on the current model implementation.
+For EfficientTAM, the ordered frames are processed as a video sequence and segmentation masks are generated for the corresponding frames.
 
 ---
 
 # 📊 Evaluation
 
-The primary segmentation metric used for quantitative evaluation is:
+The primary segmentation metric considered in this project is **Intersection over Union (IoU)**.
 
-## Intersection over Union (IoU)
-
-IoU measures the overlap between a predicted segmentation mask and its corresponding ground-truth mask.
+IoU measures the overlap between the predicted segmentation mask and the corresponding ground-truth mask.
 
 ```text
-IoU = Area of Intersection
-      ───────────────────────
-        Area of Union
+             Area of Prediction ∩ Ground Truth
+IoU = ─────────────────────────────────────────────
+             Area of Prediction ∪ Ground Truth
 ```
-
-Higher IoU values indicate greater overlap between the prediction and ground truth.
 
 ### Evaluation Requirements
 
@@ -354,14 +315,13 @@ For a reproducible evaluation, the following are required:
 
 * Predicted segmentation masks
 * Corresponding ground-truth masks
-* Consistent image/frame ordering
-* Clearly defined evaluation procedure
+* Consistent image dimensions
+* A defined evaluation protocol
+* The same dataset split for all models
 
----
+### Results
 
-# 🧪 Experimental Results
-
-Quantitative results are intentionally reported only after running a reproducible evaluation against the corresponding ground-truth masks.
+Quantitative results will be reported after running the models against the corresponding ground-truth masks.
 
 | Model        | IoU | Inference Time | FPS |
 | ------------ | --: | -------------: | --: |
@@ -369,82 +329,84 @@ Quantitative results are intentionally reported only after running a reproducibl
 | nanoVLM      | TBD |            TBD | TBD |
 | SmolVLM      | TBD |            TBD | TBD |
 
-> **TBD** values should be replaced with results obtained from actual experiments.
+> **Note:** Results are intentionally marked as `TBD` until they are reproduced using a consistent evaluation procedure. This avoids reporting an unverified experimental value.
 
-No unverified IoU value is reported as the final project result.
+---
+
+# 📈 Model Comparison
+
+The models are compared from several perspectives:
+
+| Criterion             | EfficientTAM | nanoVLM         | SmolVLM         |
+| --------------------- | ------------ | --------------- | --------------- |
+| Primary Purpose       | Segmentation | Vision-Language | Vision-Language |
+| Frame Processing      | ✓            | ✓               | ✓               |
+| Lightweight Focus     | ✓            | ✓               | ✓               |
+| Segmentation          | ✓            | Experimental    | Experimental    |
+| Multimodal Processing | —            | ✓               | ✓               |
+
+The final quantitative comparison should be based on actual experiments performed using the same dataset and evaluation protocol.
 
 ---
 
 # ⚠️ Limitations
 
-* The dataset is provided as pre-extracted image frames.
-* The segmentation stage operates on individual frames rather than directly reading MP4 files.
-* EfficientTAM is the primary segmentation-oriented model in the project.
-* nanoVLM and SmolVLM are primarily Vision-Language Models and are included for multimodal experimentation and comparison.
-* Model performance depends on the dataset, model configuration, hardware, and evaluation methodology.
-* Quantitative results should be reported only after evaluation against appropriate ground-truth masks.
+* The dataset is provided as **pre-extracted image frames**.
+* The segmentation stage does not require direct MP4 input.
+* EfficientTAM is the primary segmentation-oriented model.
+* nanoVLM and SmolVLM are primarily Vision-Language Models.
+* Model performance depends on the dataset, model configuration, hardware, and preprocessing pipeline.
+* Quantitative metrics should only be reported after evaluation against appropriate ground-truth masks.
+* Results may vary depending on the hardware and inference configuration.
 
 ---
 
-# 🔮 Future Improvements
+# 🔮 Future Work
 
-Potential future improvements include:
+Possible future improvements include:
 
-* Automated video-to-frame extraction
-* Automatic frame-to-video reconstruction
-* More comprehensive quantitative evaluation
-* Mean IoU across complete video sequences
-* FPS and inference-time benchmarking
-* GPU memory benchmarking
-* Additional lightweight segmentation models
-* Improved visualization of segmentation masks
-* Automated experiment tracking
+* 🎯 More comprehensive quantitative evaluation
+* 📊 Additional segmentation metrics such as Dice Score
+* ⚡ FPS and inference-time benchmarking
+* 💾 GPU memory usage comparison
+* 🎞️ Automatic reconstruction of segmented videos
+* 🧪 Evaluation on additional datasets
+* 🔧 Further optimization of lightweight inference
+* 📈 More extensive model comparison
 
 ---
 
 # 📚 References
 
-## EfficientTAM
+### EfficientTAM
 
-Yang, F. et al. **EfficientTAM: Fast and Memory-Efficient Tracking and Segmentation.**
+EfficientTAM — Efficient and memory-efficient video object segmentation and tracking.
 
-Official repository:
+[Official EfficientTAM Repository](https://github.com/yformer/EfficientTAM?utm_source=chatgpt.com)
 
-https://github.com/yformer/EfficientTAM
+### nanoVLM
 
----
+Hugging Face — nanoVLM.
 
-## nanoVLM
+[Official nanoVLM Repository](https://github.com/huggingface/nanoVLM?utm_source=chatgpt.com)
 
-Hugging Face. **nanoVLM: A Tiny Vision-Language Model.**
+[nanoVLM Introduction](https://huggingface.co/blog/nanovlm?utm_source=chatgpt.com)
 
-Official repository:
+### SmolVLM
 
-https://github.com/huggingface/nanoVLM
+Hugging Face — SmolVLM.
 
-Official introduction:
+[SmolVLM Documentation](https://huggingface.co/docs/transformers/model_doc/smolvlm?utm_source=chatgpt.com)
 
-https://huggingface.co/blog/nanovlm
-
----
-
-## SmolVLM
-
-Hugging Face. **SmolVLM: compact vision-language models.**
-
-Official documentation:
-
-https://huggingface.co/docs/transformers/model_doc/smolvlm
-
-Official introduction:
-
-https://huggingface.co/blog/smolvlm
+[SmolVLM Introduction](https://huggingface.co/blog/smolvlm?utm_source=chatgpt.com)
 
 ---
 
-# 📖 Citation
+# 📌 Academic Use
 
-If this project is used in academic research, please cite the original papers and official repositories of the models used in the implementation.
+This repository is intended for experimentation, research, and academic use involving lightweight video segmentation and multimodal vision models.
+
+When using the implemented models in academic work, please cite the corresponding original papers and official repositories.
 
 ---
 
@@ -452,13 +414,9 @@ If this project is used in academic research, please cite the original papers an
 
 **Mahyar Bami**
 
-GitHub:
+GitHub: [@bamimahyar](https://github.com/bamimahyar?utm_source=chatgpt.com)
 
-https://github.com/bamimahyar
-
-Project:
-
-https://github.com/bamimahyar/video-segmentation-lightweight
+Project Repository: [video-segmentation-lightweight](https://github.com/bamimahyar/video-segmentation-lightweight?utm_source=chatgpt.com)
 
 ---
 
@@ -466,10 +424,4 @@ https://github.com/bamimahyar/video-segmentation-lightweight
 
 If you find this project useful, consider giving the repository a ⭐ on GitHub.
 
----
-
-<p align="center">
-
-**Lightweight Models · Video Frames · Segmentation · Computer Vision**
-
-</p>
+**Built for lightweight, practical, and research-oriented video segmentation experiments.**
