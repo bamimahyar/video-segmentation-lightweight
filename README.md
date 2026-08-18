@@ -309,19 +309,18 @@ For a reproducible evaluation, the following are required:
 * A defined evaluation protocol
 * The same dataset split for all models
 
-Results
+## 📈 Evaluation Results
 
-Quantitative results should be reported only after running the models against the corresponding ground-truth masks using a consistent evaluation procedure.
+| Model | IoU ↑ | Inference Time (ms) ↓ | FPS ↑ |
+|:------|------:|----------------------:|------:|
+| **EfficientTAM** | TBD | TBD | TBD |
+| **nanoVLM** | TBD | TBD | TBD |
+| **SmolVLM** | TBD | TBD | TBD |
 
-Model	IoU	Inference Time	FPS
-EfficientTAM	TBD	TBD	TBD
-nanoVLM	TBD	TBD	TBD
-SmolVLM	TBD	TBD	TBD
-
-Note: Results are intentionally marked as TBD until they are reproduced using a consistent evaluation procedure. This avoids reporting unverified experimental values.
-
-⸻
-
+> **Metrics Legend:**
+> - **IoU** — Intersection over Union (higher is better)
+> - **Inference Time** — milliseconds per frame (lower is better)
+> - **FPS** — Frames Per Second (higher is better)
 📈 Model Comparison
 
 The models are compared from several perspectives:
